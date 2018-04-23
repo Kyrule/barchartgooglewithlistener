@@ -11,14 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--begin::Web font -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-    <script>
-        WebFont.load({
-            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
-            active: function () {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
     <!--end::Web font -->
     <!--begin::Base Styles -->
     <link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
@@ -48,63 +40,6 @@
         google.charts.setOnLoadCallback(drawBasic);
 
         function drawBasic() {
-            //var form_url = "http://hpadb.hpa.on.ca/hpaapi/api/Analytics/GetActiveComplaintNatureCount/2018-01-01/2018-09-09";
-            //var chartdata = $.ajax({
-            //    url: form_url,
-            //    dataType: "json",
-            //    type: "GET",
-            //    contentType: 'application/json',
-            //    success: function (jsonData) {
-            //        // datafromapi = data.replace(/[\\]/gi, ''); // console.log(jsonData); 
-            //        var data = new google.visualization.DataTable();
-            //        debugger;
-            //        // assumes "word" is a string and "count" is a number //console.log(data); 
-            //        //data.addColumn('string', 'Nature', { role: "style" }, { role: 'annotation' }); 
-            //        data.addColumn('string', 'Nature');
-            //        data.addColumn('number', 'Counttype');
-            //        data.addColumn('string', { role: "style" });
-
-            //        var view = new google.visualization.DataView(data);
-            //        view.setColumns([
-            //            0,
-            //            {
-            //                calc: "stringify",
-            //                sourceColumn: 1,
-            //                type: "string",
-            //                role: "annotation"
-            //            },
-            //            {
-            //                sourceColumn: 1,
-            //                role: "style"
-            //            }]);
-            //        let arrColor = ["blue", "silver", "yellow", "#b87333"];
-            //        let p = 0;
-            //        for (var i = 0; i < jsonData.length; i++) {
-            //            if (arrColor[p]) {
-            //                data.addRow([jsonData[i].Nature, jsonData[i].Counttype, arrColor[p]]);
-            //            } else {
-            //                p = 0;
-            //                data.addRow([jsonData[i].Nature, jsonData[i].Counttype, arrColor[p]]);
-            //            }
-            //            ++p;
-            //        }
-            //        var options = {
-            //            'title': 'Active Complaint Breakdown by Nature Of Compliant ',
-            //            'width': "100%",
-            //            'height': 2000,
-            //            bar: { groupWidth: "99%" },
-            //            legend: { position: "none" }
-            //        }; // Instantiate and draw our chart, passing in some options. 
-            //        var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
-            //        chart.draw(view, options);
-
-            //    },
-            //    error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //        console.warn(XMLHttpRequest.status);
-            //        console.warn(errorThrown);
-            //    }
-            //});
-
             let theData = [
                 ['New York City, NY', 8175000],
                 ['Los Angeles, CA', 3792000],
