@@ -1,0 +1,182 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+@{
+    ViewBag.Title = "theme1";
+}
+
+
+<html lang="en">
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Metronic | Bootstrap Datepicker
+    </title>
+    <meta name="description" content="Bootstrap datepicker examples">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <link href="../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="../assets/demo/default/media/img/logo/favicon.ico" />
+</head>
+<!-- end::Head -->
+<!-- end::Body -->
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+    <h3>Test</h3>
+
+
+    <div id="chart_div"></div>
+
+    <!-- begin::Quick Nav -->
+    <!--begin::Base Scripts -->
+    <script src="../assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="../assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Resources -->
+    <script src="../assets/demo/default/custom/components/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!--end::Page Resources -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+            //var form_url = "http://hpadb.hpa.on.ca/hpaapi/api/Analytics/GetActiveComplaintNatureCount/2018-01-01/2018-09-09";
+            //var chartdata = $.ajax({
+            //    url: form_url,
+            //    dataType: "json",
+            //    type: "GET",
+            //    contentType: 'application/json',
+            //    success: function (jsonData) {
+            //        // datafromapi = data.replace(/[\\]/gi, ''); // console.log(jsonData); 
+            //        var data = new google.visualization.DataTable();
+            //        debugger;
+            //        // assumes "word" is a string and "count" is a number //console.log(data); 
+            //        //data.addColumn('string', 'Nature', { role: "style" }, { role: 'annotation' }); 
+            //        data.addColumn('string', 'Nature');
+            //        data.addColumn('number', 'Counttype');
+            //        data.addColumn('string', { role: "style" });
+
+            //        var view = new google.visualization.DataView(data);
+            //        view.setColumns([
+            //            0,
+            //            {
+            //                calc: "stringify",
+            //                sourceColumn: 1,
+            //                type: "string",
+            //                role: "annotation"
+            //            },
+            //            {
+            //                sourceColumn: 1,
+            //                role: "style"
+            //            }]);
+            //        let arrColor = ["blue", "silver", "yellow", "#b87333"];
+            //        let p = 0;
+            //        for (var i = 0; i < jsonData.length; i++) {
+            //            if (arrColor[p]) {
+            //                data.addRow([jsonData[i].Nature, jsonData[i].Counttype, arrColor[p]]);
+            //            } else {
+            //                p = 0;
+            //                data.addRow([jsonData[i].Nature, jsonData[i].Counttype, arrColor[p]]);
+            //            }
+            //            ++p;
+            //        }
+            //        var options = {
+            //            'title': 'Active Complaint Breakdown by Nature Of Compliant ',
+            //            'width': "100%",
+            //            'height': 2000,
+            //            bar: { groupWidth: "99%" },
+            //            legend: { position: "none" }
+            //        }; // Instantiate and draw our chart, passing in some options. 
+            //        var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
+            //        chart.draw(view, options);
+
+            //    },
+            //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //        console.warn(XMLHttpRequest.status);
+            //        console.warn(errorThrown);
+            //    }
+            //});
+
+            let theData = [
+                ['New York City, NY', 8175000],
+                ['Los Angeles, CA', 3792000],
+                ['Chicago, IL', 2695000],
+                ['Houston, TX', 2099000],
+                ['Philadelphia, PA', 1526000]
+            ];
+
+            const theColors = ['silver', 'red', 'green'];
+            let m = 0;
+            theData.forEach((input) => {                
+                if (theColors[m]) {
+                    input.push(theColors[m]);
+                }
+                else {
+                    m = 0;
+                    input.push(theColors[m]);
+                }                
+                ++m;
+            });
+
+            let allData = [
+                ['City', '2010 Population', { role: 'style' }]
+            ];
+
+            //forEach
+            for (let j in theData) {
+                allData.push(theData[j]);
+            }
+
+            var data = google.visualization.arrayToDataTable(allData);
+
+            var options = {
+                title: 'Population of Largest U.S. Cities',
+                width: 600,
+                height: 700,
+                bar: { groupWidth: "95%" },
+                chartArea: { width: '50%' },                                
+                hAxis: {
+                    title: 'Total Population',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'City'
+                }
+            };
+
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            function selectHandler() {
+                var selectedItem = chart.getSelection()[0];
+                if (selectedItem) {
+                    var topping = data.getValue(selectedItem.row, 0);
+                    alert('The user selected ' + topping);
+                }
+            }
+            google.visualization.events.addListener(chart, 'select', selectHandler);
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+<!-- end::Body -->
+</html>
